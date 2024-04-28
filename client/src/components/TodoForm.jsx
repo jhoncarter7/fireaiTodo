@@ -1,16 +1,18 @@
 import { useState } from "react";
+import useAddTodo from "../Hooks/useAddTodo";
+import { useAuthcontext } from "../context/authContext";
 
 // eslint-disable-next-line react/prop-types
 function TodoForm({ handleClosePopup }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
+  const {AddTodo} = useAddTodo()
+  const {setTriggerFetch} = useAuthcontext()  
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log("Title:", title);
-    console.log("Description:", description);
-
+    AddTodo(title, description)
+    setTriggerFetch(prev => !prev)
     setTitle("");
     setDescription("");
     handleClosePopup();

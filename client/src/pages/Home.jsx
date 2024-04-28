@@ -4,7 +4,6 @@ import AllTodo from "../components/AllTodo";
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const handleOpenPopup = (e) => {
     e.preventDefault();
     setIsOpen(true);

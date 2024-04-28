@@ -22,7 +22,7 @@ const auth = async (req, _) => {
  const createTodo = async (req, res) => {
   try {
     auth(req);
-
+   console.log(req.body)
     const { title, description, status } = req.body;
 
     if ([title, description].some((field) => field?.trim() === "")) {

@@ -1,13 +1,24 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLogin } from "../Hooks/useLogin";
 
 function Login() {
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+  });
+  const { login } = useLogin();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+   login(input);
+  }
   return (
     <div className="min-h-screen flex items-center justify-center w-full dark:bg-gray-950">
       <div className="bg-white dark:bg-gray-900 shadow-md rounded-lg px-8 py-6 max-w-md">
         <h1 className="text-2xl font-bold text-center mb-4 dark:text-gray-200">
           Welcome Back!
         </h1>
-        <form action="#">
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
               htmlFor="email"
@@ -20,6 +31,8 @@ function Login() {
               id="email"
               className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               placeholder="your@email.com"
+              value={input.email}
+              onChange={(e) => setInput({...input, email: e.target.value})}
               required
             />
           </div>
@@ -35,6 +48,8 @@ function Login() {
               id="password"
               className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               placeholder="Enter your password"
+              value={input.password}
+              onChange={(e) => setInput({...input, password: e.target.value})}
               required
             />
             <a
