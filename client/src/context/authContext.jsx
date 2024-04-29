@@ -11,10 +11,11 @@ const AuthProvider = ({ children }) => {
   const [authUser, setAuthUser] = useState(
     JSON.parse(localStorage.getItem("user") || null)
   );
-  const [triggerFetch, setTriggerFetch] = useState(false);
+  const [triggerFetch, setTriggerFetch] = useState(true);
+  const [editTodo, setEditTodo] = useState(null);
   return (
     <AuthContext.Provider
-      value={{ authUser, setAuthUser, triggerFetch, setTriggerFetch }}
+      value={{ authUser, setAuthUser, triggerFetch, setTriggerFetch, editTodo, setEditTodo}}
     >
       {children}
     </AuthContext.Provider>

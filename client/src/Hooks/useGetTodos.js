@@ -6,6 +6,8 @@ export const useGetTodos = () => {
   const [loading, setLoading] = useState(false);
   const [AllTodos, setAllTodos] = useState([]);
   const {triggerFetch} = useAuthcontext()
+ 
+  
   useEffect(() => {
     const getTodos = async () => {
         setLoading(true);

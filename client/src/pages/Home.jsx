@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoForm from "../components/TodoForm";
 import AllTodo from "../components/AllTodo";
+import EditForm from "../components/EditForm";
+import { useAuthcontext } from "../context/authContext";
+import ViewDetails from "../components/ViewDetails";
+
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+  const [isView, setIsView] = useState(false);
+  const {editTodo} = useAuthcontext()
+
   const handleOpenPopup = (e) => {
     e.preventDefault();
     setIsOpen(true);
@@ -13,6 +21,10 @@ const Home = () => {
     setIsOpen(false);
   };
 
+//  useEffect(() => {
+  
+//  }, [isEdit])
+
   return (
     <div className="sm:p-4 flex flex-col justify-center ">
       <button
@@ -21,8 +33,10 @@ const Home = () => {
       >
         Add Todo
       </button>
-      <AllTodo/>
+      <AllTodo setIsEdit= {setIsEdit} setIsView= {setIsView}/>
       {isOpen && <TodoForm handleClosePopup={handleClosePopup} />}
+      {isEdit && <EditForm  setIsEdit= {setIsEdit} id={editTodo?.id} title={editTodo?.title} description={editTodo?.description}/>}
+      {isView && <ViewDetails  setIsView= {setIsView} id={editTodo?.id} title={editTodo?.title} description={editTodo?.description} status={editTodo?.status}/>}
     </div>
   );
 };

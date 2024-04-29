@@ -7,12 +7,13 @@ function TodoForm({ handleClosePopup }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const {AddTodo} = useAddTodo()
-  const {setTriggerFetch} = useAuthcontext()  
+  const {triggerFetch, setTriggerFetch} = useAuthcontext()  
   
   const handleSubmit = (e) => {
     e.preventDefault();
     AddTodo(title, description)
-    setTriggerFetch(prev => !prev)
+    setTriggerFetch((triggerFetch) => !triggerFetch)
+    console.log("triggerFetch", triggerFetch)
     setTitle("");
     setDescription("");
     handleClosePopup();
@@ -20,7 +21,7 @@ function TodoForm({ handleClosePopup }) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-8 rounded">
+      <div className="bg-white p-8 rounded w-[70%] md:w-[50%]">
         <form onSubmit={handleSubmit}>
           <h2 className="text-lg font-semibold mb-4">Add Todo</h2>
           <div className="mb-4">

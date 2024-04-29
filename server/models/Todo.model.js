@@ -11,7 +11,6 @@ const todoSchema = new Schema({
     },
     status:{
         type: String,
-        required: true,
         default: "pending"
     },
     

@@ -12,7 +12,7 @@ const useAddTodo = () => {
         },
         body: JSON.stringify({
             title,
-            description
+            description,
         })
     })
 
