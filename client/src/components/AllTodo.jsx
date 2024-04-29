@@ -27,8 +27,6 @@ function AllTodo({ setIsEdit, setIsView }) {
   };
 
   const changeStatus = (e, todoId, title, description, status) => {
-    console.log(e.target.checked)
-    console.log(status)
     if (e.target.checked) {
       updateTodo({
         title,
@@ -36,6 +34,7 @@ function AllTodo({ setIsEdit, setIsView }) {
         todoId,
         status: "completed",
       });
+      
     } else {
       updateTodo({
         title,
@@ -43,6 +42,7 @@ function AllTodo({ setIsEdit, setIsView }) {
         todoId,
         status: "pending",
       });
+     
     }
   };
 

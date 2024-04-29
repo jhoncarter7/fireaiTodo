@@ -30,7 +30,7 @@ function Login() {
               type="email"
               id="email"
               className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="your@email.com"
+              placeholder="test1@test.com"
               value={input.email}
               onChange={(e) => setInput({...input, email: e.target.value})}
               required
@@ -47,7 +47,7 @@ function Login() {
               type="password"
               id="password"
               className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Enter your password"
+              placeholder="123445"
               value={input.password}
               onChange={(e) => setInput({...input, password: e.target.value})}
               required
@@ -63,6 +63,9 @@ function Login() {
             <Link to="/signup" className="text-xs text-indigo-500 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               Create Account
             </Link>
+          </div>
+          <div  className=" text-fuchsia-300 text-opacity-25">
+            enter email show in placeholder to get login or create a new account
           </div>
           <button
             type="submit"

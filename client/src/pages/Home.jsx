@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TodoForm from "../components/TodoForm";
 import AllTodo from "../components/AllTodo";
 import EditForm from "../components/EditForm";
 import { useAuthcontext } from "../context/authContext";
 import ViewDetails from "../components/ViewDetails";
+import Logout from "./Logout";
 
 
 const Home = () => {
@@ -26,6 +27,10 @@ const Home = () => {
 //  }, [isEdit])
 
   return (
+    <>
+    <div  className="pt-4">
+    <Logout/>
+    </div>
     <div className="sm:p-4 flex flex-col justify-center ">
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded max-w-48 mx-auto mb-4"
@@ -38,6 +43,8 @@ const Home = () => {
       {isEdit && <EditForm  setIsEdit= {setIsEdit} id={editTodo?.id} title={editTodo?.title} description={editTodo?.description}/>}
       {isView && <ViewDetails  setIsView= {setIsView} id={editTodo?.id} title={editTodo?.title} description={editTodo?.description} status={editTodo?.status}/>}
     </div>
+    
+    </>
   );
 };
 
